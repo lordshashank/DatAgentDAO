@@ -10,3 +10,6 @@
 [submodule "contracts/lib/solidity-bignumber"]
 	path = contracts/lib/solidity-bignumber
 	url = https://github.com/zondax/solidity-bignumber
+[submodule "contracts/lib/foundry-devops"]
+	path = contracts/lib/foundry-devops
+	url = https://github.com/Cyfrin/foundry-devops
