@@ -5,23 +5,46 @@ import {Test} from "forge-std/Test.sol";
 import {MyGovernor} from "../src/MyGovernor.sol";
 import {GovToken} from "../src/GovToken.sol";
 import {TimeLock} from "../src/TimeLock.sol";
-import {Box} from "../src/Box.sol";
+import {DatAgentDAO} from "../src/DatAgentDAO.sol";
 import {console} from "forge-std/console.sol";
 
 contract MyGovernorTest is Test {
     GovToken token;
     TimeLock timelock;
     MyGovernor governor;
-    Box box;
+    DatAgentDAO datAgentDao;
+
+    // User request for this contract to make a deal. This structure is modelled after Filecoin's Deal
+    // Proposal, but leaves out the provider, since any provider can pick up a deal broadcast by this
+    // contract.
+    struct DealRequest {
+        bytes piece_cid;
+        uint64 piece_size;
+        bool verified_deal;
+        string label;
+        int64 start_epoch;
+        int64 end_epoch;
+        uint256 storage_price_per_epoch;
+        uint256 provider_collateral;
+        uint256 client_collateral;
+        uint64 extra_params_version;
+        ExtraParamsV1 extra_params;
+    }
+
+    // Extra parameters associated with the deal request. These are off-protocol flags that
+    // the storage provider will need.
+    struct ExtraParamsV1 {
+        string location_ref;
+        uint64 car_size;
+        bool skip_ipni_announce;
+        bool remove_unsealed_copy;
+    }
 
     uint256 public constant MIN_DELAY = 3600; // 1 hour - after a vote passes, you have 1 hour before you can enact
     uint256 public constant QUORUM_PERCENTAGE = 4; // Need 4% of voters to pass
     uint256 public constant VOTING_PERIOD = 50400; // This is how long voting lasts
     uint256 public constant VOTING_DELAY = 1; // How many blocks till a proposal vote becomes active
-    struct check {
-        uint256 a;
-        uint256 b;
-    }
+
     address[] proposers;
     address[] executors;
 
@@ -47,42 +70,45 @@ contract MyGovernorTest is Test {
         timelock.grantRole(executorRole, address(0));
         timelock.revokeRole(adminRole, msg.sender);
 
-        box = new Box();
-        box.transferOwnership(address(timelock));
+        datAgentDao = new DatAgentDAO(address(token));
+        datAgentDao.transferOwnership(address(timelock));
     }
 
-    // function testCheckSum() public {
-    //     check memory c = check(1, 2);
-    //     console.log("c.a:", c.a);
-    //     console.log("c.b:", c.b);
-    //     uint256 sum = box.checkSum(check(1, 2));
-    //     assertEq(sum, 3);
-    // }
-
-    function testCantUpdateBoxWithoutGovernance() public {
+    function testCantUpdateDatAgentDAOWithoutGovernance() public {
         vm.expectRevert();
-        uint256 value = 777;
-        box.store(value);
+        assert(datAgentDao.getDataSet() == 0);
     }
 
-    function testGovernanceUpdatesBox() public {
-        uint256 valueToStore = 777;
-        string memory description = "Store 1 in Box";
-        bytes memory encodedFunctionCall = abi.encodeWithSignature(
-            "store(uint256)",
-            valueToStore
+    function testGovernanceUpdatesDatAgentDAO() public {
+        DealRequest memory dealRequestToBeMade;
+        dealRequestToBeMade = DealRequest(
+            "QmQmQmQmQmQmQmQmQmQmQmQmQmQmQm",
+            100,
+            true,
+            "test",
+            0,
+            10,
+            0,
+            0,
+            0,
+            1,
+            ExtraParamsV1("", 0, false, false)
         );
-        addressesToCall.push(address(box));
+        string
+            memory description = "Stable diffusion dataset to be addded to the network";
+        bytes memory encodedFunctionCall = abi.encodeWithSignature(
+            "provideDataSet(DealRequest calldata)",
+            dealRequestToBeMade
+        );
+        addressesToCall.push(address(datAgentDao));
         values.push(0);
         functionCalls.push(encodedFunctionCall);
-        // 1. Propose to the DAO
         uint256 proposalId = governor.propose(
             addressesToCall,
             values,
             functionCalls,
             description
         );
-
         console.log("Proposal State:", uint256(governor.state(proposalId)));
         // governor.proposalSnapshot(proposalId)
         // governor.proposalDeadline(proposalId)
@@ -103,6 +129,7 @@ contract MyGovernorTest is Test {
         vm.roll(block.number + VOTING_PERIOD + 1);
 
         console.log("Proposal State:", uint256(governor.state(proposalId)));
+        console.log("Proposal Votes:");
 
         // 3. Queue
         bytes32 descriptionHash = keccak256(abi.encodePacked(description));
@@ -117,7 +144,5 @@ contract MyGovernorTest is Test {
             functionCalls,
             descriptionHash
         );
-
-        assert(box.retrieve() == valueToStore);
     }
 }

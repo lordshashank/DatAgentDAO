@@ -2,9 +2,9 @@
 src = "src"
 out = "out"
 libs = ["lib"]
-
-remappings = ['@openzeppelin/contracts=lib/openzeppelin-contracts/contracts']
-
+solc_version = "0.8.17"
+remappings = ['@openzeppelin/contracts=lib/openzeppelin-contracts/contracts', '@zondax/filecoin-solidity=lib/filecoin-solidity', '@zondax/solidity-bignumber=lib/solidity-bignumber']
+optimizer = true
 [etherscan]
 mainnet = { key = "${ETHERSCAN_API_KEY}" }
 sepolia = {key = "${ETHERSCAN_API_KEY}"}
