@@ -18,10 +18,7 @@ contract MyGovernorTest is Test {
     uint256 public constant QUORUM_PERCENTAGE = 4; // Need 4% of voters to pass
     uint256 public constant VOTING_PERIOD = 50400; // This is how long voting lasts
     uint256 public constant VOTING_DELAY = 1; // How many blocks till a proposal vote becomes active
-    struct check {
-        uint256 a;
-        uint256 b;
-    }
+
     address[] proposers;
     address[] executors;
 
@@ -51,13 +48,13 @@ contract MyGovernorTest is Test {
         box.transferOwnership(address(timelock));
     }
 
-    // function testCheckSum() public {
-    //     check memory c = check(1, 2);
-    //     console.log("c.a:", c.a);
-    //     console.log("c.b:", c.b);
-    //     uint256 sum = box.checkSum(check(1, 2));
-    //     assertEq(sum, 3);
-    // }
+    function testCheckSum() public {
+        Box.Check memory c = Box.Check(1, 2);
+        console.log("c.a:", c.a);
+        console.log("c.b:", c.b);
+        uint256 sum = box.checkSum(c);
+        assertEq(sum, 3);
+    }
 
     function testCantUpdateBoxWithoutGovernance() public {
         vm.expectRevert();
@@ -104,7 +101,7 @@ contract MyGovernorTest is Test {
 
         console.log("Proposal State:", uint256(governor.state(proposalId)));
 
-        // 3. Queue
+        // 3.
         bytes32 descriptionHash = keccak256(abi.encodePacked(description));
         governor.queue(addressesToCall, values, functionCalls, descriptionHash);
         vm.roll(block.number + MIN_DELAY + 1);
@@ -119,5 +116,116 @@ contract MyGovernorTest is Test {
         );
 
         assert(box.retrieve() == valueToStore);
+    }
+
+    function testGovernanceUpdatesBoxName() public {
+        string memory nameToStore = "new name";
+        string memory description = "Changes Box Name";
+        bytes memory encodedFunctionCall = abi.encodeWithSignature(
+            "storeName(string)",
+            nameToStore
+        );
+        addressesToCall.push(address(box));
+        values.push(0);
+        functionCalls.push(encodedFunctionCall);
+        // 1. Propose to the DAO
+        uint256 proposalId = governor.propose(
+            addressesToCall,
+            values,
+            functionCalls,
+            description
+        );
+
+        console.log("Proposal State:", uint256(governor.state(proposalId)));
+        // governor.proposalSnapshot(proposalId)
+        // governor.proposalDeadline(proposalId)
+
+        vm.warp(block.timestamp + VOTING_DELAY + 1);
+        vm.roll(block.number + VOTING_DELAY + 1);
+
+        console.log("Proposal State:", uint256(governor.state(proposalId)));
+
+        // 2. Vote
+        string memory reason = "I like a do da cha cha";
+        // 0 = Against, 1 = For, 2 = Abstain for this example
+        uint8 voteWay = 1;
+        vm.prank(VOTER);
+        governor.castVoteWithReason(proposalId, voteWay, reason);
+
+        vm.warp(block.timestamp + VOTING_PERIOD + 1);
+        vm.roll(block.number + VOTING_PERIOD + 1);
+
+        console.log("Proposal State:", uint256(governor.state(proposalId)));
+
+        // 3. Queue
+        bytes32 descriptionHash = keccak256(abi.encodePacked(description));
+        governor.queue(addressesToCall, values, functionCalls, descriptionHash);
+        vm.roll(block.number + MIN_DELAY + 1);
+        vm.warp(block.timestamp + MIN_DELAY + 1);
+
+        // 4. Execute
+        governor.execute(
+            addressesToCall,
+            values,
+            functionCalls,
+            descriptionHash
+        );
+        assertEq(box.name(), nameToStore);
+    }
+
+    function testGovernanceUpdatesBoxStruct() public {
+        Box.Check memory check = Box.Check(1, 2);
+        string memory description = "Changes Box's check struct";
+        bytes memory encodedFunctionCall = abi.encodeWithSignature(
+            "storeCheck((uint256,uint256))",
+            check
+        );
+        addressesToCall.push(address(box));
+        values.push(0);
+        functionCalls.push(encodedFunctionCall);
+        // 1. Propose to the DAO
+        uint256 proposalId = governor.propose(
+            addressesToCall,
+            values,
+            functionCalls,
+            description
+        );
+
+        console.log("Proposal State:", uint256(governor.state(proposalId)));
+        // governor.proposalSnapshot(proposalId)
+        // governor.proposalDeadline(proposalId)
+
+        vm.warp(block.timestamp + VOTING_DELAY + 1);
+        vm.roll(block.number + VOTING_DELAY + 1);
+
+        console.log("Proposal State:", uint256(governor.state(proposalId)));
+
+        // 2. Vote
+        string memory reason = "I like a do da cha cha";
+        // 0 = Against, 1 = For, 2 = Abstain for this example
+        uint8 voteWay = 1;
+        vm.prank(VOTER);
+        governor.castVoteWithReason(proposalId, voteWay, reason);
+
+        vm.warp(block.timestamp + VOTING_PERIOD + 1);
+        vm.roll(block.number + VOTING_PERIOD + 1);
+
+        console.log("Proposal State:", uint256(governor.state(proposalId)));
+
+        // 3. Queue
+        bytes32 descriptionHash = keccak256(abi.encodePacked(description));
+        governor.queue(addressesToCall, values, functionCalls, descriptionHash);
+        vm.roll(block.number + MIN_DELAY + 1);
+        vm.warp(block.timestamp + MIN_DELAY + 1);
+
+        // 4. Execute
+        governor.execute(
+            addressesToCall,
+            values,
+            functionCalls,
+            descriptionHash
+        );
+        (uint256 a, ) = box.check();
+        assert(a == check.a);
     }
 }

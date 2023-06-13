@@ -12,8 +12,9 @@ const useWeb3 = () => {
     deactivateWeb3,
     user,
     isAuthenticated,
+    chainId: chainIdHex,
   } = useMoralis();
-  const [chainId, setChainId] = useState();
+  const [chainId, setChainId] = useState(parseInt(chainIdHex));
   useEffect(() => {
     const getIds = async () => {
       Moralis.onChainChanged((chainIdHex) => {
@@ -31,6 +32,9 @@ const useWeb3 = () => {
 
     getIds();
   }, []);
+  useEffect(() => {
+    setChainId(parseInt(chainIdHex));
+  }, [chainIdHex]);
   return { chainId, userAccount: account, Moralis, isWeb3Enabled };
 };
 

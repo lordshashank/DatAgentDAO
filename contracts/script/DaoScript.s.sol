@@ -8,7 +8,7 @@ import {TimeLock} from "../src/TimeLock.sol";
 import {DatAgentDAO} from "../src/DatAgentDAO.sol";
 import {console} from "forge-std/console.sol";
 
-contract DeployFundMe is Script {
+contract DeployDatagentDAO is Script {
     GovToken token;
     TimeLock timelock;
     MyGovernor governor;
@@ -39,17 +39,17 @@ contract DeployFundMe is Script {
         console.log("timelock:", address(timelock));
         governor = new MyGovernor(token, timelock);
         console.log("governor:", address(governor));
-        vm.stopBroadcast();
+        // vm.stopBroadcast();
         bytes32 proposerRole = timelock.PROPOSER_ROLE();
         bytes32 executorRole = timelock.EXECUTOR_ROLE();
         bytes32 adminRole = timelock.TIMELOCK_ADMIN_ROLE();
-        vm.startBroadcast();
+        // vm.startBroadcast();
         timelock.grantRole(proposerRole, address(governor));
         timelock.grantRole(executorRole, address(0));
         timelock.revokeRole(adminRole, msg.sender);
         datAgentDAO = new DatAgentDAO(address(governor));
         console.log("datAgentDAO:", address(datAgentDAO));
         vm.stopBroadcast();
-        return (address(datAgentDAO));
+        return (address(governor));
     }
 }

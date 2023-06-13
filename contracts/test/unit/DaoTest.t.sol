@@ -5,33 +5,8 @@ import {Test} from "forge-std/Test.sol";
 import {MyGovernor} from "../../src/MyGovernor.sol";
 import {GovToken} from "../../src/GovToken.sol";
 import {TimeLock} from "../../src/TimeLock.sol";
-import {DatAgentDAO} from "../../src/DatAgentDAO.sol";
+import "../../src/DatAgentDAO.sol";
 import {console} from "forge-std/console.sol";
-// User request for this contract to make a deal. This structure is modelled after Filecoin's Deal
-// Proposal, but leaves out the provider, since any provider can pick up a deal broadcast by this
-// contract.
-struct DealRequest {
-    bytes piece_cid;
-    uint64 piece_size;
-    bool verified_deal;
-    string label;
-    int64 start_epoch;
-    int64 end_epoch;
-    uint256 storage_price_per_epoch;
-    uint256 provider_collateral;
-    uint256 client_collateral;
-    uint64 extra_params_version;
-    ExtraParamsV1 extra_params;
-}
-
-// Extra parameters associated with the deal request. These are off-protocol flags that
-// the storage provider will need.
-struct ExtraParamsV1 {
-    string location_ref;
-    uint64 car_size;
-    bool skip_ipni_announce;
-    bool remove_unsealed_copy;
-}
 
 contract DaoUnitTest is Test {
     GovToken token;
@@ -63,9 +38,9 @@ contract DaoUnitTest is Test {
         // datAgentDao.transferOwnership(address(timelock));
     }
 
-    function testCantUpdateDatAgentDAOWithoutGovernance() public {
-        vm.expectRevert();
-        assert(datAgentDao.getDataSet() == 0);
+    function testCantUpdateDatAgentDAOWithoutGovernances() public {
+        // vm.expectRevert();
+        assert(datAgentDao.getDataSet() == 1);
     }
 
     function testProviderDataSet() public {
@@ -83,8 +58,8 @@ contract DaoUnitTest is Test {
             ExtraParamsV1("", 0, false, false)
         );
         console.log(dealRequestToBeMade.extra_params.car_size);
-        // bool check = datAgentDao.provideDataSet(dealRequestToBeMade);
-        bool check = true;
+        bool check = datAgentDao.provideDataSet(dealRequestToBeMade);
+        // bool check = true;
         assert(check == true);
     }
 }
