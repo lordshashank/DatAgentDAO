@@ -33,19 +33,28 @@ contract Interactions is Script {
     function setRecentContracts() internal {
         address mostRecentlyDeployedToken = DevOpsTools
             .get_most_recent_deployment("GovToken", 314159);
-            console.log("mostRecentlyDeployedToken:", mostRecentlyDeployedToken);
+        console.log("mostRecentlyDeployedToken:", mostRecentlyDeployedToken);
         token = GovToken(mostRecentlyDeployedToken);
         address mostRecentlyDeployedTimeLock = DevOpsTools
             .get_most_recent_deployment("TimeLock", 314159);
-            console.log("mostRecentlyDeployedTimeLock:", mostRecentlyDeployedTimeLock);
+        console.log(
+            "mostRecentlyDeployedTimeLock:",
+            mostRecentlyDeployedTimeLock
+        );
         timelock = TimeLock(payable(mostRecentlyDeployedTimeLock));
         address mostRecentlyDeployedGovernor = DevOpsTools
             .get_most_recent_deployment("MyGovernor", 314159);
-            console.log("mostRecentlyDeployedGovernor:", mostRecentlyDeployedGovernor);
+        console.log(
+            "mostRecentlyDeployedGovernor:",
+            mostRecentlyDeployedGovernor
+        );
         governor = MyGovernor(payable(mostRecentlyDeployedGovernor));
         address mostRecentlyDeployedDatAgentDAO = DevOpsTools
             .get_most_recent_deployment("DatAgentDAO", 314159);
-            console.log("mostRecentlyDeployedDatAgentDAO:", mostRecentlyDeployedDatAgentDAO);
+        console.log(
+            "mostRecentlyDeployedDatAgentDAO:",
+            mostRecentlyDeployedDatAgentDAO
+        );
         datAgentDAO = DatAgentDAO(mostRecentlyDeployedDatAgentDAO);
     }
 
@@ -54,7 +63,7 @@ contract Interactions is Script {
 
         DealRequest memory dealRequestToBeMade;
         dealRequestToBeMade = DealRequest(
-            "QmQmQmQmQmQmQmQmQmQmQmQmQmQmQm",
+            "yahoooooooo",
             100,
             true,
             "test",
@@ -74,15 +83,17 @@ contract Interactions is Script {
         addressesToCall.push(address(datAgentDAO));
         values.push(0);
         functionCalls.push(encodedFunctionCall);
-        // vm.startBroadcast();
-        // uint256 proposalId = governor.propose(
-        //     addressesToCall,
-        //     values,
-        //     functionCalls,
-        //     description
-        // );
-        // vm.stopBroadcast();
-        uint256 proposalId = 15300460995652809111354301338262948016922046385437762538561034890047635408341;
+        vm.startBroadcast();
+        uint256 proposalId = governor.propose(
+            addressesToCall,
+            values,
+            functionCalls,
+            description
+        );
+        // token.delegate(msg.sender);
+
+        vm.stopBroadcast();
+        // uint256 proposalId = 15300460995652809111354301338262948016922046385437762538561034890047635408341;
         console.log("Proposal ID:", proposalId);
         console.log("Proposal State:", uint256(governor.state(proposalId)));
         console.log(governor.proposalSnapshot(proposalId));

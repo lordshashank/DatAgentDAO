@@ -56,7 +56,7 @@ contract MyGovernorTest is Test {
     function testGovernanceUpdatesDatAgentDAO() public {
         DealRequest memory dealRequestToBeMade;
         dealRequestToBeMade = DealRequest(
-            "QmQmQmQmQmQmQmQmQmQmQmQmQmQmQm",
+            "86",
             100,
             true,
             "test",
@@ -68,12 +68,13 @@ contract MyGovernorTest is Test {
             1,
             ExtraParamsV1("", 0, false, false)
         );
+        // bytes memory check = dealRequestToBeMade.piece_cid;
+        // console.log("hehehee", check);
         string memory description = "Changes Box Name";
         bytes memory encodedFunctionCall = abi.encodeWithSignature(
             "provideDataSet((bytes,uint64,bool,string,int64,int64,uint256,uint256,uint256,uint64,(string,uint64,bool,bool)))",
             dealRequestToBeMade
         );
-        console.log(string(encodedFunctionCall));
         addressesToCall.push(address(datAgentDao));
         values.push(0);
         functionCalls.push(encodedFunctionCall);
