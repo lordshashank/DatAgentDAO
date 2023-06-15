@@ -1,4 +1,3 @@
-"use client";
 import { ConnectButton } from "web3uikit";
 import useWeb3 from "../utils/useWeb3";
 const Header = () => {
