@@ -1,3 +1,4 @@
+"use client";
 import CID from "cids";
 import { useMoralis } from "react-moralis";
 import { use, useState, useEffect } from "react";
@@ -145,4 +146,5 @@ export default useGovernorContracts = () => {
       console.log(error);
     }
   };
+  return { propose, castVoteWithReason, queue, execute };
 };
