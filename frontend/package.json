@@ -14,6 +14,8 @@
   "license": "ISC",
   "dependencies": {
     "@moralisweb3/next": "^2.9.0",
+    "@tableland/local": "^0.0.5",
+    "@tableland/sdk": "^4.3.2",
     "cids": "^1.1.9",
     "ethers": "^5.7.2",
     "moralis": "^2.9.0",
