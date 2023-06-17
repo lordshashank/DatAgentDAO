@@ -1,4 +1,93 @@
-.header {
+.home {
+  background: black url("../public/homeshape-bg.png") center no-repeat;
+  background-size: cover;
+  z-index: 10;
+}
+.header-down {
   display: flex;
-  justify-content: space-between;
+}
+.header-down > div:nth-child(1) {
+  flex: 2;
+}
+.header-down > div:nth-child(2) {
+  flex: 1;
+}
+.highlights {
+  padding: 2em 0 2em 2em;
+  margin-top: 2em;
+  color: white;
+  display: flex;
+  flex-direction: column;
+  gap: 2em;
+}
+.highlights > h1 {
+  font-size: 2.3em;
+}
+.highlights > p {
+  font-size: 1.3em;
+  font-weight: 300;
+}
+.forward {
+  padding: 0.8em;
+  border-radius: 50px;
+  background-color: white;
+  color: black;
+}
+.buttons {
+  display: flex;
+  gap: 2em;
+}
+.arrows {
+  display: flex;
+  gap: 1em;
+}
+.arrow {
+  border: 2px solid white;
+  color: white;
+  border-radius: 30px;
+  padding: 0.5em;
+  cursor: pointer;
+}
+.arrow:hover {
+  color: #37e0f7;
+  background: white;
+}
+.robot-image {
+  background: url("../public/home.png") no-repeat;
+  background-position: right;
+  background-size: contain;
+  display: flex;
+  justify-content: flex-end;
+  align-items: flex-end;
+}
+.upload {
+  all: unset;
+  background-image: linear-gradient(100deg, #02162d 0%, #37e0f7 100%);
+  color: white;
+  display: flex;
+  align-items: center;
+  gap: 1em;
+  padding: 0.5em 1.25em;
+  border-top-right-radius: 40px;
+  border-bottom-right-radius: 40px;
+  border-top-left-radius: 40px;
+  cursor: pointer;
+  font-size: 1.2em;
+  font-weight: 600;
+  margin-right: 2em;
+  margin-bottom: 4em;
+}
+@media (width < 600px) {
+  .home {
+    padding: 1em;
+  }
+}
+
+@media (width < 800px) {
+  .arrows {
+    margin: auto;
+  }
+  .robot-image {
+    display: none;
+  }
 }

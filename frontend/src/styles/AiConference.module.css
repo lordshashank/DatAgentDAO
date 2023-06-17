@@ -1,0 +1,13 @@
+.ai-conference {
+  min-height: 100vh;
+}
+.header-intro {
+  background-color: #02162d;
+}
+.header-intro > h1 {
+  color: white;
+  padding: 3em 0;
+  text-align: center;
+  font-weight: 600;
+  font-size: 2.5em;
+}

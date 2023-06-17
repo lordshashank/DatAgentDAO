@@ -1,0 +1,52 @@
+.footer {
+  background: #02162d;
+  color: white;
+  padding: 4em 2em;
+  display: flex;
+  gap: 3em;
+}
+.footer > div {
+  flex: 1;
+}
+.links {
+  display: flex;
+  flex-direction: column;
+  gap: 2em;
+}
+.logo-container {
+  display: flex;
+  align-items: center;
+}
+.logo-container > span {
+  color: white;
+  font-size: 1.3em;
+  font-weight: 500;
+}
+.links > p {
+  font-weight: 300;
+}
+.social-links {
+  display: flex;
+  align-items: center;
+  gap: 2em;
+}
+
+.contact-us {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5em;
+}
+.contact-us > h4 {
+  font-size: 1.4em;
+  font-weight: 500;
+}
+.contact-us > p {
+  font-size: 0.9em;
+  font-weight: 300;
+  display: flex;
+  align-items: center;
+  gap: 1em;
+}
+.icon {
+  color: #37e0f7;
+}

@@ -1,0 +1,92 @@
+.events {
+  margin: auto;
+  max-width: 1000px;
+  padding: 4em;
+}
+.fields {
+  border: 1px solid #ccc;
+  padding: 0.8em 1.25em;
+  display: flex;
+  align-items: center;
+  gap: 0.7em;
+}
+.input-field {
+  all: unset;
+}
+.find-btn {
+  all: unset;
+  color: white;
+  background-image: linear-gradient(100deg, #02162d 0%, #37e0f7 100%);
+  padding: 1em;
+  border-top-right-radius: 40px;
+  border-bottom-right-radius: 40px;
+  border-top-left-radius: 40px;
+  font-size: 0.9em;
+  margin-left: auto;
+}
+.all-events {
+  position: relative;
+  margin-top: 2em;
+}
+.all-events::after {
+  content: "";
+  position: absolute;
+  width: 100%;
+  height: 2px;
+  background-color: #ccc;
+}
+.calendar button {
+  all: unset;
+  color: white;
+  background-image: linear-gradient(100deg, #02162d 0%, #37e0f7 100%);
+  padding: 1em;
+  border-top-right-radius: 40px;
+  border-bottom-right-radius: 40px;
+  border-top-left-radius: 40px;
+  font-size: 0.9em;
+  margin-left: auto;
+  margin-top: 2em;
+  display: flex;
+  align-items: center;
+  gap: 0.4em;
+  cursor: pointer;
+}
+.calendar button:hover {
+  background-image: linear-gradient(100deg, #37e0f7 0%, #02162d 100%);
+}
+/* Events Card */
+
+.events-card::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  background-color: #ccc;
+}
+.events-card {
+  padding: 2em 0;
+  display: flex;
+  gap: 2em;
+}
+.details {
+  flex: 0.7;
+  display: flex;
+  flex-direction: column;
+  gap: 1em;
+}
+.details > p:nth-child(2) > span {
+  font-weight: 700;
+  font-size: 1.1em;
+}
+
+.img-container {
+  flex: 0.3;
+  /* width: 300px; */
+}
+.image {
+  width: 100%;
+  height: fit-content;
+  max-height: 250px;
+}

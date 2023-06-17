@@ -1,0 +1,38 @@
+.choose {
+  background: url("../../public/home-why-choose-us-image.png") center left
+      no-repeat,
+    url("../../public/home-why-choose-us-bg-image.png") left bottom no-repeat,
+    url("../../public/bg.png") right top no-repeat, #02162d;
+  background-size: contain;
+  display: flex;
+  justify-content: flex-end;
+  padding: 2em;
+}
+.choose > div {
+  flex: 0.4;
+  display: flex;
+  flex-direction: column;
+  gap: 2em;
+}
+
+.point {
+  padding: 0.5em;
+  border-radius: 50%;
+  background-image: linear-gradient(100deg, #02162d 0%, #37e0f7 100%);
+  color: white;
+}
+.row {
+  display: flex;
+  align-items: center;
+  gap: 1em;
+  color: white;
+  margin-bottom: 1em;
+}
+
+@media (width< 800px) {
+  .choose > div {
+    flex: 1;
+    align-items: center;
+    text-align: center;
+  }
+}

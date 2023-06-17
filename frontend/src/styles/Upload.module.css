@@ -1,0 +1,244 @@
+.content {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+.upload_msg {
+  background-color: #02162d;
+  text-align: center;
+  animation: upload 1s;
+}
+@keyframes upload {
+  from {
+    transform: translateY(-40px);
+  }
+  to {
+    transform: translateY(0);
+  }
+}
+.heading {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: #02162d;
+  padding: 1rem;
+}
+.manual_header {
+  display: none;
+}
+.title {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  color: white;
+}
+.heading-close {
+  font-size: 1.5rem;
+  cursor: pointer;
+  color: #37e0f7;
+}
+.content h1 {
+  color: white;
+  /* font-style: normal; */
+  font-weight: 500;
+  font-size: 1.3rem;
+  margin: 0;
+}
+.details {
+  padding: 2rem;
+  background-color: #eafcfe;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  color: #37e0f7;
+}
+.form {
+  display: flex;
+  gap: 2rem;
+}
+.left-box {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  flex: 0.5;
+  gap: 1rem;
+}
+.miner_details {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  white-space: nowrap;
+}
+.miner_details h6 {
+  font-size: 1rem;
+  background: transparent;
+  padding: 0;
+  margin: 0;
+  color: black;
+  font-weight: 500;
+}
+.miner_details span {
+  font-size: 0.8rem;
+  font-weight: 500;
+}
+.miner_details h6:nth-child(2) {
+  max-width: 180px;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 1;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.check-price-button {
+  align-self: flex-end;
+  padding: 0.5rem;
+  background: transparent;
+  border: 2px solid #0a184e;
+  /* font-style: normal; */
+  font-weight: 600;
+  font-size: 1rem;
+  border-radius: 5px;
+  cursor: pointer;
+}
+.input_field {
+  background-color: #ffffff;
+  border-radius: 5px;
+  flex: 0.5;
+  padding: 0.5rem;
+}
+.input {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  border: 1px dotted black;
+  border-radius: 5px;
+  box-sizing: border-box;
+  padding: 2em;
+}
+.upload-logo {
+  font-size: 2rem;
+}
+.file-input-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.file-input {
+  display: none;
+}
+.file-input p {
+  color: #0a184e;
+}
+
+.file-input-label {
+  color: #0a184e;
+  cursor: pointer;
+}
+.file-input-label:hover {
+  text-decoration: underline;
+}
+
+.file-input:focus + .file-input-label {
+  outline: 1px dotted #000;
+  outline: -webkit-focus-ring-color auto 5px;
+}
+.buy-button-box {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+}
+.buy-button {
+  all: unset;
+  background-image: linear-gradient(100deg, #02162d 0%, #37e0f7 100%);
+  color: white;
+  display: flex;
+  align-items: center;
+  gap: 1em;
+  padding: 0.5em 1em;
+  border-top-right-radius: 40px;
+  border-bottom-right-radius: 40px;
+  border-top-left-radius: 40px;
+  cursor: pointer;
+  font-size: 1.2em;
+  font-weight: 600;
+  transition: all 0.1s ease-in;
+}
+.buy-button:hover {
+  background-image: linear-gradient(100deg, #37e0f7 0%, #02162d 100%);
+}
+.buy-button:disabled {
+  background: #aaa;
+  cursor: not-allowed;
+}
+.input ul {
+  display: flex;
+  flex-direction: column;
+  align-self: flex-start;
+  gap: 0.5rem;
+  width: 100%;
+  overflow: hidden;
+  margin: 1em 0;
+  padding: 0;
+}
+.files {
+  list-style: none;
+  font-size: 15px;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.5rem;
+  max-width: 100%;
+}
+
+.files a {
+  max-width: 100%;
+  color: black;
+  text-decoration: none;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 1;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.files a:hover {
+  text-decoration: underline;
+}
+
+.close {
+  clip-path: polygon(
+    0 100%,
+    0 80%,
+    30% 50%,
+    0 20%,
+    0 0,
+    20% 0,
+    50% 30%,
+    80% 0,
+    100% 0,
+    100% 22%,
+    70% 50%,
+    100% 80%,
+    100% 100%,
+    80% 100%,
+    50% 70%,
+    20% 100%
+  );
+  align-self: center;
+  background-color: black;
+  min-width: 15px;
+  height: 15px;
+  cursor: pointer;
+  padding: 0;
+  margin: 0;
+}
+
+.miner_details > input {
+  padding: 0.3rem 0.5rem;
+}
