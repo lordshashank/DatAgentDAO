@@ -51,16 +51,17 @@ const page = () => {
       <button onClick={() => readDatabase("calib_314159_194")}>
         Read Database
       </button>
-      {/* <Image
-        src="https://ipfs.io/ipfs/bafybeihfy4opphtnkbzihf5mfziioxitlqyuctnezauydnycaashti6asi/fail-mascot.gif"
+      <Image
+        src="https://ipfs.io/ipfs/QmSCQZ8ZF2FhSird5fJSs3QYSr9KvrxAUnGn6kzTySSgmX/outputs/image0.png"
         width={400}
         height={400}
       />
       <Image
-        src="https://ipfs.io/ipfs/bafybeicr7yeoegk5kcxn2er52gkbnp6dethflk475xlo2k3jramk6r5sfy/starry_night_full.jpg"
+        // src="https://ipfs.io/ipfs/bafybeicr7yeoegk5kcxn2er52gkbnp6dethflk475xlo2k3jramk6r5sfy/starry_night_full.jpg"
+        src="https://ipfs.io/ipfs/bafybeibzkimk372le6bdtbpvrksm7occe2kjya6c7czr3ctbfmev7f74bi/outputs/image0.png"
         width={400}
         height={400}
-      /> */}
+      />
     </div>
   );
 };
