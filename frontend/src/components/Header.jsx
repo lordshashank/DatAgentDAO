@@ -24,16 +24,19 @@ const Header = () => {
         style={{ all: "unset", cursor: "pointer" }}
       >
         <div className={classes["logo-container"]}>
-          <Image src={logo} width={50} height={40} />
+          <Image className={classes.logo} src={logo} width={50} height={40} />
           <span>DatAgent DAO</span>
         </div>
       </Link>
       <div className={classes.links}>
-        <Link
-          className={activeClassName("/ai-conference")}
-          href="/ai-conference"
-        >
+        <Link className={activeClassName("/")} href="/">
+          Home
+        </Link>
+        <Link className={activeClassName("/daos")} href="/daos">
           DAOs
+        </Link>
+        <Link className={activeClassName("/proposals")} href="/proposals">
+          Proposals
         </Link>
       </div>
       <div className={classes["connect-button"]}>

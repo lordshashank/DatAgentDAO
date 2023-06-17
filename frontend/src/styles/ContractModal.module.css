@@ -1,0 +1,54 @@
+.input-fields {
+  display: flex;
+  flex-direction: column;
+  gap: 1em;
+  padding: 1em;
+}
+.input-fields > input {
+  padding: 0.5em 1em;
+}
+.btns {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 3em;
+}
+.btn {
+  all: unset;
+  padding: 0.5em 1.25em;
+  background-image: linear-gradient(100deg, #02162d 0%, #37e0f7 100%);
+  border-top-right-radius: 40px;
+  border-bottom-right-radius: 40px;
+  border-top-left-radius: 40px;
+  color: white;
+  cursor: pointer;
+}
+.btn:hover {
+  background-image: linear-gradient(100deg, #37e0f7 0%, #02162d 100%);
+}
+
+/* Test Modal */
+.modal {
+  background: #02162d;
+  color: white;
+}
+.form {
+  padding: 3em 2em;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 2em;
+}
+.form label {
+  font-size: 1.8em;
+  color: #37e0f7;
+}
+.form input {
+  all: unset;
+  background: white;
+  color: black;
+  border-radius: 5px;
+  padding: 0.8em 1.8em;
+  width: 80%;
+}

@@ -7,12 +7,13 @@
 }
 .footer > div {
   flex: 1;
-}
-.links {
   display: flex;
   flex-direction: column;
+  align-items: center;
   gap: 2em;
+  text-align: left;
 }
+
 .logo-container {
   display: flex;
   align-items: center;
@@ -31,11 +32,6 @@
   gap: 2em;
 }
 
-.contact-us {
-  display: flex;
-  flex-direction: column;
-  gap: 1.5em;
-}
 .contact-us > h4 {
   font-size: 1.4em;
   font-weight: 500;
