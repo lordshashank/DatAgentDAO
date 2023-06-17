@@ -1,17 +1,17 @@
 .home {
   background: black url("../public/homeshape-bg.png") center no-repeat;
   background-size: cover;
-  height: 500px;
+  min-height: 500px;
   z-index: 10;
 }
 .header-down {
   display: flex;
 }
 .header-down > div:nth-child(1) {
-  flex: 2;
+  flex: 3;
 }
 .header-down > div:nth-child(2) {
-  flex: 1;
+  flex: 2;
 }
 .highlights {
   padding: 2em 0 2em 2em;
@@ -19,14 +19,18 @@
   color: white;
   display: flex;
   flex-direction: column;
-  gap: 2em;
+  gap: 3em;
 }
 .highlights > h1 {
   font-size: 2.3em;
+  line-height: 1.4em;
+  letter-spacing: 1px;
 }
 .highlights > p {
   font-size: 1.3em;
   font-weight: 300;
+  line-height: 1.5em;
+  letter-spacing: 1px;
 }
 .forward {
   padding: 0.8em;

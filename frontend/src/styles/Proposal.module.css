@@ -1,0 +1,101 @@
+.row {
+  display: flex;
+  gap: 1em;
+  max-width: 1000px;
+  margin: auto;
+  padding: 0 1em;
+  margin-bottom: 3em;
+}
+.row > div {
+  flex: 1;
+  background: white;
+}
+.for,
+.against,
+.details,
+.proposal-history {
+  box-shadow: 0px 2px 4px rgba(16, 21, 24, 0.05);
+  border-radius: 4px;
+}
+.for > div:nth-child(1),
+.against > div:nth-child(1) {
+  padding: 1em 0;
+  font-size: 1em;
+}
+.for > div,
+.against > div {
+  display: flex;
+  justify-content: space-between;
+  position: relative;
+  padding: 1em 0;
+}
+.for > div:after,
+.against > div:after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  height: 1px;
+  background: #ccc;
+}
+.for > div > p,
+.against > div > p {
+  padding: 0 1em;
+  font-size: 0.9em;
+}
+.for > div:nth-child(1) > p,
+.against > div:nth-child(1) > p {
+  padding: 0 1em;
+  font-weight: 700;
+}
+.for > div:nth-child(2) > p,
+.against > div:nth-child(2) > p {
+  color: #ccc;
+  font-size: 0.9em;
+  font-weight: 700;
+}
+.for > div:nth-last-child(1) > button,
+.against > div:nth-last-child(1) > button {
+  all: unset;
+  cursor: pointer;
+  margin: auto;
+}
+
+.row > .details {
+  flex: 0.7;
+}
+.row > .proposal-history {
+  flex: 0.3;
+}
+.details > h3,
+.proposal-history > h3 {
+  font-size: 1em;
+  font-weight: 700;
+  padding: 1em;
+  border-bottom: 1px solid #ccc;
+}
+.activity {
+  padding: 1em;
+  display: flex;
+  flex-direction: column;
+  gap: 1em;
+}
+.activity > div {
+  display: flex;
+  align-items: center;
+  gap: 1em;
+  /* padding: 1em; */
+}
+.grey,
+.green {
+  padding: 0.3em;
+  border-radius: 50%;
+}
+.grey {
+  background-color: grey;
+  color: white;
+}
+.green {
+  background-color: green;
+  color: white;
+}

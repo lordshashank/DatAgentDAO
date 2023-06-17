@@ -471,36 +471,20 @@ const UploadFile = (props) => {
           <div className={classes.form}>
             <div className={classes["left-box"]}>
               <form className={classes.miner_details}>
-                <label htmlFor="start-time">Start Time</label>
+                <label htmlFor="start-time">Proposal Description</label>
                 <input
                   id="start-time"
-                  type="date"
+                  type="text"
                   value={values.startTime}
                   onChange={startTimeHandler}
-                  min={tomorrow.toISOString().split("T")[0]}
                 />
-                <label htmlFor="end-time">End Time</label>
+                <label htmlFor="end-time"> Upload</label>
                 <input
                   id="end-time"
-                  type="date"
+                  type="text"
                   value={values.endTime}
-                  min={
-                    values.startTime.length > 0
-                      ? minEndDate.toISOString().split("T")[0]
-                      : undefined
-                  }
                   onChange={valueChangeHandler("endTime")}
-                  disabled={values.startTime.length === 0}
                 />
-                <div>
-                  <input
-                    type="checkbox"
-                    defaultChecked
-                    onChange={valueChangeHandler("isChecked")}
-                    id="keep"
-                  />
-                  <label htmlFor="keep">keep the copy</label>
-                </div>
               </form>
               {/* <form onSubmit={dealIDHandler}>
                 <div>
