@@ -13,6 +13,7 @@ import useWeb3 from "../../utils/useWeb3";
 import { useState } from "react";
 import UploadFile from "../components/UploadFile";
 import { useAbiEncodeWithSignature } from "../../utils/useAbiEncodeFunctions";
+import useDaoContracts from "../../utils/useDaoContracts";
 const page = () => {
   const [showCart, setShowCart] = useState(false);
   const { sendProposal, sendQueue } = useGovernorContracts();
@@ -24,7 +25,7 @@ const page = () => {
     transferDatabase,
     readDatabase,
   } = useDatabase();
-
+  const { getImageFromPrompt, getAllImages } = useDaoContracts();
   // console.log(getDatabases());
   // createDatabase();
   // writeInDatabase("my_sdk_table_80001_6961");
@@ -52,6 +53,7 @@ const page = () => {
     "function provideDataSet((bytes piece_cid, uint64 piece_size, bool verified_deal, string label, int64 start_epoch, int64 end_epoch, uint256 storage_price_per_epoch,uint256 provider_collateral,uint256 client_collateral,uint64 extra_params_version,(string location_ref, uint64 car_size, bool skip_ipni_announce, bool remove_unsealed_copy) nestedParam))";
   return (
     <div>
+      <button onClick={() => getAllImages()}>Get Image</button>
       {showCart && (
         <UploadFile
           onClose={() => setShowCart(false)}
