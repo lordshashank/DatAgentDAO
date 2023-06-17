@@ -65,3 +65,28 @@
   border-radius: 50%;
   padding: 1.5em;
 }
+
+@media (width < 850px) {
+  .services {
+    flex-direction: column;
+    text-align: center;
+    justify-content: center;
+  }
+  .row > div:nth-child(2) {
+    margin-top: 0em;
+  }
+  .row:nth-child(2) {
+    margin-top: 2em;
+  }
+  .btn-container {
+    text-align: center;
+    display: flex;
+    justify-content: center;
+  }
+}
+@media (width < 600px) {
+  .row {
+    flex-direction: column;
+    gap: 1em;
+  }
+}

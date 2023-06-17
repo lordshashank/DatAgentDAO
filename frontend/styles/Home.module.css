@@ -6,13 +6,15 @@
 .header-down {
   display: flex;
 }
-.header-down > div {
+.header-down > div:nth-child(1) {
+  flex: 2;
+}
+.header-down > div:nth-child(2) {
   flex: 1;
 }
 .highlights {
-  margin-top: 2em;
-  margin-left: 2em;
   padding: 2em 0 2em 2em;
+  margin-top: 2em;
   color: white;
   display: flex;
   flex-direction: column;
@@ -54,9 +56,27 @@
   background: url("../public/home.png") no-repeat;
   background-position: right;
   background-size: contain;
-  z-index: 100;
+  display: flex;
+  justify-content: flex-end;
+  align-items: flex-end;
 }
-
+.upload {
+  all: unset;
+  background-image: linear-gradient(100deg, #02162d 0%, #37e0f7 100%);
+  color: white;
+  display: flex;
+  align-items: center;
+  gap: 1em;
+  padding: 0.5em 1.25em;
+  border-top-right-radius: 40px;
+  border-bottom-right-radius: 40px;
+  border-top-left-radius: 40px;
+  cursor: pointer;
+  font-size: 1.2em;
+  font-weight: 600;
+  margin-right: 2em;
+  margin-bottom: 4em;
+}
 @media (width < 600px) {
   .home {
     padding: 1em;

@@ -10,8 +10,11 @@ import Footer from "../components/Footer";
 import Image from "next/image";
 import useDatabase from "../../utils/useDatabase";
 import useWeb3 from "../../utils/useWeb3";
+import { useState } from "react";
+import UploadFile from "../components/UploadFile";
 import { useAbiEncodeWithSignature } from "../../utils/useAbiEncodeFunctions";
 const page = () => {
+  const [showCart, setShowCart] = useState(false);
   const { sendProposal, sendQueue } = useGovernorContracts();
   const { userAccount, Moralis, isWeb3Enabled } = useWeb3();
   const {
@@ -49,6 +52,12 @@ const page = () => {
     "function provideDataSet((bytes piece_cid, uint64 piece_size, bool verified_deal, string label, int64 start_epoch, int64 end_epoch, uint256 storage_price_per_epoch,uint256 provider_collateral,uint256 client_collateral,uint64 extra_params_version,(string location_ref, uint64 car_size, bool skip_ipni_announce, bool remove_unsealed_copy) nestedParam))";
   return (
     <div>
+      {showCart && (
+        <UploadFile
+          onClose={() => setShowCart(false)}
+          anotherFunction={false}
+        />
+      )}
       <div className={classes.home}>
         <Header />
         <div className={classes["header-down"]}>
@@ -73,13 +82,29 @@ const page = () => {
               <IoIosArrowForward className={classes.arrow} size={20} />
             </div>
           </div>
-          <div className={classes["robot-image"]}></div>
+          <div className={classes["robot-image"]}>
+            <button
+              className={classes.upload}
+              onClick={() => setShowCart(!showCart)}
+              disabled={!userAccount}
+            >
+              Upload File
+            </button>
+          </div>
         </div>
       </div>
       <AboutUs />
       <Services />
       <Choose />
       <Footer />
+      {/* <button onClick={async () => await sendProposal(deal)}>Propose</button>
+      <button onClick={() => createDatabase("calib")}>Create Database</button>
+      <button
+        onClick={() => writeInDatabase("calib_314159_193", 2, "test")}
+      ></button>
+      <button onClick={() => readDatabase("calib_314159_194")}>
+        Read Database
+      </button> */}
       {/* <button onClick={() => propose1(deal)}>Propose</button> */}
       {/* <Image
         src="https://ipfs.io/ipfs/bafybeihfy4opphtnkbzihf5mfziioxitlqyuctnezauydnycaashti6asi/fail-mascot.gif"

@@ -1,9 +1,11 @@
 .header {
   display: flex;
-  justify-content: space-between;
   align-items: center;
+  justify-content: space-between;
+  gap: 2em;
   padding: 1em 2em;
 }
+
 .logo-container {
   display: flex;
   align-items: center;
@@ -13,6 +15,7 @@
   font-size: 1.4em;
   font-weight: 600;
 }
+
 .link {
   all: unset;
   color: #ffffff;
@@ -50,4 +53,10 @@
 .link.active {
   font-weight: 550;
   position: relative;
+}
+
+@media (width < 700px) {
+  .header {
+    flex-wrap: wrap;
+  }
 }

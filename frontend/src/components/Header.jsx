@@ -18,10 +18,16 @@ const Header = () => {
   console.log(isWeb3Enabled);
   return (
     <div className={classes.header}>
-      <div className={classes["logo-container"]}>
-        <Image src={logo} width={50} height={40} />
-        <span>Artelligence</span>
-      </div>
+      <Link
+        className={classes["logo"]}
+        href={"/"}
+        style={{ all: "unset", cursor: "pointer" }}
+      >
+        <div className={classes["logo-container"]}>
+          <Image src={logo} width={50} height={40} />
+          <span>Artelligence</span>
+        </div>
+      </Link>
       <div className={classes.links}>
         <Link
           className={activeClassName("/ai-conference")}
@@ -30,7 +36,9 @@ const Header = () => {
           Ai Conference
         </Link>
       </div>
-      <ConnectButton moralisAuth={false} />
+      <div className={classes["connect-button"]}>
+        <ConnectButton moralisAuth={false} />
+      </div>
     </div>
   );
 };

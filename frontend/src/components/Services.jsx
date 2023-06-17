@@ -39,7 +39,7 @@ const Services = () => {
           molestiae non recusandae. Itaque earum rerum hic tenetur a sapiente
           delectus.
         </p>
-        <div>
+        <div className={classes["btn-container"]}>
           <button className="custom-btn">
             {" "}
             Read More <IoIosArrowForward className="forward" />
