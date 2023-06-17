@@ -2,7 +2,7 @@ import { ConnectButton } from "web3uikit";
 import { useRouter } from "next/router";
 import useWeb3 from "../../utils/useWeb3";
 import classes from "../styles/Header.module.css";
-import logo from "../../public/logo@2x.png";
+import logo from "../../public/logo_datagentdao.jpg";
 import Link from "next/link";
 import Image from "next/image";
 const Header = () => {

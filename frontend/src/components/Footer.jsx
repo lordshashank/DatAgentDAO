@@ -1,5 +1,5 @@
 import classes from "../styles/Footer.module.css";
-import logo from "../../public/logo@2x.png";
+import logo from "../../public/logo_datagentdao.jpg";
 import Image from "next/image";
 import { FaFacebookF, FaTwitter, FaLinkedinIn } from "react-icons/fa";
 import { MdCall, MdMail, MdLocationOn } from "react-icons/md";
@@ -12,10 +12,7 @@ const Footer = () => {
           <Image src={logo} width={50} height={40} />
           <span>DatAgent DAO</span>
         </div>
-        <p>
-          Ruis aute irure dolor in reprehenderit in volu velit ese ciu nulla
-          pariatur excepteur sint oc aecat curidatat nona…
-        </p>
+        <p>One-stop solution for Decentralized AI Protocols</p>
         <div className={classes["social-links"]}>
           <FaFacebookF />
           <FaTwitter />
@@ -24,16 +21,15 @@ const Footer = () => {
       </div>
       <div className={classes["contact-us"]}>
         <h4>Contact Us</h4>
+        {/* <p>
+          <MdCall className={classes.icon} /> +91-9382XXXXXX
+        </p> */}
         <p>
-          <MdCall className={classes.icon} /> +91-8473XXXXXX
+          <MdMail className={classes.icon} /> shashanktrivedi1917@gmail.com
         </p>
-        <p>
-          <MdMail className={classes.icon} /> abcd@gmail.com
-        </p>
-        <p>
-          <MdLocationOn className={classes.icon} /> 21 King Street Melbourne ,
-          3000 , Australia
-        </p>
+        {/* <p>
+          <MdLocationOn className={classes.icon} />
+        </p> */}
       </div>
     </div>
   );

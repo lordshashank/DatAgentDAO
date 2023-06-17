@@ -54,7 +54,7 @@
   background: white;
 }
 .robot-image {
-  background: url("../public/home.png") no-repeat;
+  background: url("../public/filecoin.jpg") no-repeat;
   background-position: right;
   background-size: contain;
   display: flex;
