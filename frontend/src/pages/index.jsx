@@ -8,9 +8,30 @@ import Services from "../components/Services";
 import Choose from "../components/Choose";
 import Footer from "../components/Footer";
 import Image from "next/image";
+import useDatabase from "../../utils/useDatabase";
+import useWeb3 from "../../utils/useWeb3";
 import { useAbiEncodeWithSignature } from "../../utils/useAbiEncodeFunctions";
 const page = () => {
-  const { propose1 } = useGovernorContracts();
+  const { sendProposal, sendQueue } = useGovernorContracts();
+  const { userAccount, Moralis, isWeb3Enabled } = useWeb3();
+  const {
+    createDatabase,
+    writeInDatabase,
+    getDatabases,
+    transferDatabase,
+    readDatabase,
+  } = useDatabase();
+
+  // console.log(getDatabases());
+  // createDatabase();
+  // writeInDatabase("my_sdk_table_80001_6961");
+  // const databaseName = createDatabase();
+  // writeInDatabase(databaseName, 100);
+  // readDatabase(databaseName);
+  // updateDatabase(databaseName, 200);
+  // readDatabase(databaseName);
+  // getHealthCheck();
+
   const deal = [
     "0x6567",
     100,
@@ -22,7 +43,7 @@ const page = () => {
     0,
     0,
     1,
-    ["", 0, false, false],
+    ["", 90, false, false],
   ];
   const functionName =
     "function provideDataSet((bytes piece_cid, uint64 piece_size, bool verified_deal, string label, int64 start_epoch, int64 end_epoch, uint256 storage_price_per_epoch,uint256 provider_collateral,uint256 client_collateral,uint64 extra_params_version,(string location_ref, uint64 car_size, bool skip_ipni_announce, bool remove_unsealed_copy) nestedParam))";

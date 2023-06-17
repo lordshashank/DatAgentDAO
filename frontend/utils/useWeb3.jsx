@@ -13,6 +13,7 @@ const useWeb3 = () => {
     user,
     isAuthenticated,
     chainId: chainIdHex,
+    web3,
   } = useMoralis();
   const [chainId, setChainId] = useState(parseInt(chainIdHex));
   useEffect(() => {
@@ -35,7 +36,7 @@ const useWeb3 = () => {
   useEffect(() => {
     setChainId(parseInt(chainIdHex));
   }, [chainIdHex]);
-  return { chainId, userAccount: account, Moralis, isWeb3Enabled };
+  return { chainId, userAccount: account, Moralis, isWeb3Enabled, web3 };
 };
 
 export default useWeb3;

@@ -4,15 +4,19 @@ pragma solidity ^0.8.17;
 import {Ownable} from "@openzeppelin/contracts/access/Ownable.sol";
 import "./DatAgentDealClient.sol";
 import {GovToken} from "./GovToken.sol";
+import "./StableDiffusionCallerV2.sol";
 
-contract DatAgentDAO is Ownable, DatAgentDealClient {
+contract DatAgentDAO is Ownable, DatAgentDealClient, StableDiffusionCallerV2 {
     uint256 tokensForProvidingData = 1e18;
     mapping(address => bytes) public providerToDataCID;
     GovToken public govToken;
 
     event DataProvided(address indexed provider, bytes deal);
 
-    constructor(address _govToken) {
+    constructor(
+        address _govToken,
+        address _bridgeContractAddress
+    ) StableDiffusionCallerV2(_bridgeContractAddress) {
         govToken = GovToken(_govToken);
     }
 

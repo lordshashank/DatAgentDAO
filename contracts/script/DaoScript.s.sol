@@ -18,6 +18,8 @@ contract DeployDatagentDAO is Script {
     uint256 public constant QUORUM_PERCENTAGE = 4; // Need 4% of voters to pass
     uint256 public constant VOTING_PERIOD = 50400; // This is how long voting lasts
     uint256 public constant VOTING_DELAY = 1; // How many blocks till a proposal vote becomes active
+    address public constant LilypadEventsUpgradeableCpntracts =
+        address(0xdC7612fa94F098F1d7BB40E0f4F4db8fF0bC8820);
     struct check {
         uint256 a;
         uint256 b;
@@ -47,7 +49,10 @@ contract DeployDatagentDAO is Script {
         timelock.grantRole(proposerRole, address(governor));
         timelock.grantRole(executorRole, address(0));
         timelock.revokeRole(adminRole, msg.sender);
-        datAgentDAO = new DatAgentDAO(address(governor));
+        datAgentDAO = new DatAgentDAO(
+            address(governor),
+            LilypadEventsUpgradeableCpntracts
+        );
         console.log("datAgentDAO:", address(datAgentDAO));
         vm.stopBroadcast();
         return (address(governor));

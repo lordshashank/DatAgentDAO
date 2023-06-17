@@ -22,18 +22,18 @@ const deal = [
 const abiCoder = new ethers.utils.AbiCoder();
 
 // const encodedData = abiCoder.encode(["uint", "string"], [1234, "Hello World"]);
-// console.log(
-//   useAbiEncodeWithSignature(
-//     "function provideDataSet (tuple (bytes piece_cid, uint64 piece_size, bool verified_deal, string label, int64 start_epoch, int64 end_epoch, uint256 storage_price_per_epoch,uint256 provider_collateral,uint256 client_collateral,uint64 extra_params_version,tuple(string location_ref, uint64 car_size, bool skip_ipni_announce, bool remove_unsealed_copy)))",
-//     // "function provideDataSet( tuple (int64))",
-//     "provideDataSet",
-//     [deal]
-//   )
-// );
 console.log(
-  ethers.utils.keccak256(
-    ethers.utils.solidityPack(["string"], ["Changes Box Name"])
+  useAbiEncodeWithSignature(
+    "function provideDataSet (tuple (bytes piece_cid, uint64 piece_size, bool verified_deal, string label, int64 start_epoch, int64 end_epoch, uint256 storage_price_per_epoch,uint256 provider_collateral,uint256 client_collateral,uint64 extra_params_version,tuple(string location_ref, uint64 car_size, bool skip_ipni_announce, bool remove_unsealed_copy) extra_params) deal)",
+    // "function provideDataSet( tuple (int64))",
+    "provideDataSet",
+    [deal]
   )
 );
+// console.log(
+//   ethers.utils.keccak256(
+//     ethers.utils.solidityPack(["string"], ["Changes Box Name"])
+//   )
+// );
 
 // console.log(encodedData);
