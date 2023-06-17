@@ -10,9 +10,14 @@ import {
   useAbiEncodePacked,
   useKeccak256,
 } from "./useAbiEncodeFunctions";
-export default useGovernorContracts = () => {
+
+const functionName =
+  "function provideDataSet((bytes piece_cid, uint64 piece_size, bool verified_deal, string label, int64 start_epoch, int64 end_epoch, uint256 storage_price_per_epoch,uint256 provider_collateral,uint256 client_collateral,uint64 extra_params_version,(string location_ref, uint64 car_size, bool skip_ipni_announce, bool remove_unsealed_copy) nestedParam))";
+
+const useGovernorContracts = () => {
   const { userAccount, Moralis, isWeb3Enabled } = useWeb3();
-  const propose = async (dealDataset) => {
+  const { runContractFunction: propose } = useWeb3Contract({});
+  const propose1 = async (dealDataset) => {
     const description = `dataset proposed by ${userAccount} to improve stable diffusion model`;
     const parameters = {
       abi: abi.Governor,
@@ -22,11 +27,9 @@ export default useGovernorContracts = () => {
         targets: [contractAddress.DatAgentDAO],
         values: [0],
         callDatas: [
-          useAbiEncodeWithSignature(
-            "function provideDataSet (tuple (bytes piece_cid, uint64 piece_size, bool verified_deal, string label, int64 start_epoch, int64 end_epoch, uint256 storage_price_per_epoch,uint256 provider_collateral,uint256 client_collateral,uint64 extra_params_version,tuple(string location_ref, uint64 car_size, bool skip_ipni_announce, bool remove_unsealed_copy)))",
-            "provideDataSet",
-            [dealDataset]
-          ),
+          useAbiEncodeWithSignature(functionName, "provideDataSet", [
+            dealDataset,
+          ]),
         ],
         description: description,
       },
@@ -84,11 +87,9 @@ export default useGovernorContracts = () => {
         targets: [contractAddress.DatAgentDAO],
         values: [0],
         callDatas: [
-          useAbiEncodeWithSignature(
-            "function provideDataSet (tuple (bytes piece_cid, uint64 piece_size, bool verified_deal, string label, int64 start_epoch, int64 end_epoch, uint256 storage_price_per_epoch,uint256 provider_collateral,uint256 client_collateral,uint64 extra_params_version,tuple(string location_ref, uint64 car_size, bool skip_ipni_announce, bool remove_unsealed_copy)))",
-            "provideDataSet",
-            [dealDataset]
-          ),
+          useAbiEncodeWithSignature(functionName, "provideDataSet", [
+            dealDataset,
+          ]),
         ],
         descriptionHash: useKeccak256(
           useAbiEncodePacked(["string"], [description])
@@ -121,11 +122,9 @@ export default useGovernorContracts = () => {
         targets: [contractAddress.DatAgentDAO],
         values: [0],
         callDatas: [
-          useAbiEncodeWithSignature(
-            "function provideDataSet (tuple (bytes piece_cid, uint64 piece_size, bool verified_deal, string label, int64 start_epoch, int64 end_epoch, uint256 storage_price_per_epoch,uint256 provider_collateral,uint256 client_collateral,uint64 extra_params_version,tuple(string location_ref, uint64 car_size, bool skip_ipni_announce, bool remove_unsealed_copy)))",
-            "provideDataSet",
-            [dealDataset]
-          ),
+          useAbiEncodeWithSignature(functionName, "provideDataSet", [
+            dealDataset,
+          ]),
         ],
         description: description,
       },
@@ -146,5 +145,7 @@ export default useGovernorContracts = () => {
       console.log(error);
     }
   };
-  return { propose, castVoteWithReason, queue, execute };
+  return { propose1, castVoteWithReason, queue, execute };
 };
+
+export default useGovernorContracts;

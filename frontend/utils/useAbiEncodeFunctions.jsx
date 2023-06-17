@@ -1,4 +1,4 @@
-import ethers from "ethers";
+import { ethers } from "ethers";
 // const ethers = require("ethers");
 // export default
 function useAbiEncodeWithSignature(functionDefinition, functionName, args) {

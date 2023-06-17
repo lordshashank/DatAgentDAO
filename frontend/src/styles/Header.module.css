@@ -1,0 +1,53 @@
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1em 2em;
+}
+.logo-container {
+  display: flex;
+  align-items: center;
+}
+.logo-container > span {
+  color: white;
+  font-size: 1.4em;
+  font-weight: 600;
+}
+.link {
+  all: unset;
+  color: #ffffff;
+  font-size: 1.2em;
+  padding: 0.5em 0;
+  transition: all 0.3s ease-in;
+  position: relative;
+}
+.link:after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 3px;
+  visibility: hidden;
+  transform: scaleX(0);
+  transition: all 0.2s ease-in-out;
+  transform-origin: left;
+  background-color: #36e0f7;
+}
+.link:hover {
+  color: #36e0f7;
+  cursor: pointer;
+}
+.link:hover::after {
+  visibility: visible;
+  transform: scaleX(1);
+}
+.link.active::after {
+  visibility: visible;
+  transition: none;
+  transform: scaleX(1);
+}
+.link.active {
+  font-weight: 550;
+  position: relative;
+}
