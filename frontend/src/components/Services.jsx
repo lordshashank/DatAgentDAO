@@ -4,40 +4,45 @@ import { IoIosArrowForward } from "react-icons/io";
 const data1 = [
   {
     image: "ROBOTIC",
-    title: "Robotic Automation",
-    description: "Autem vel eum iure reprehea rui in ea volutae velit…",
+    title: "Tableland",
+    description:
+      "Enables Decentralized Databases that can be accessed only by owner",
   },
   {
     image: "MACHINE",
-    title: "Robotic Automation",
-    description: "Autem vel eum iure reprehea rui in ea volutae velit…",
+    title: "Saturn",
+    description:
+      "Saturn's CDN allows easy Easy retrievals of the output images, datasets, etc",
   },
 ];
 const data2 = [
   {
     image: "EDUCATION",
-    title: "Robotic Automation",
-    description: "Autem vel eum iure reprehea rui in ea volutae velit…",
+    title: "Beryx API",
+    description:
+      "Beryx API help to track the proposal progress and status of other transactions",
   },
   {
     image: "PREDICTIVE",
-    title: "Robotic Automation",
-    description: "Autem vel eum iure reprehea rui in ea volutae velit…",
+    title: "Push Protocol",
+    description:
+      "Push enables the notifications of which proposals are passing, when models are getting trained, etc to users",
   },
 ];
 const Services = () => {
   return (
     <div className={classes.services}>
       <div className={classes["half-section"]}>
-        <h1 className="section-heading">SERVICES WE PROVIDE</h1>
+        <h1 className="section-heading">How do we do it?</h1>
         <h4 className="section-title">
-          Our Purpose is To Deliver Excellence in Service and Execution
+          We use various decentralized protocols to make all this possible
         </h4>
         <p className="description">
-          Repellendus autem ruibusdam et aut officiis debitis aut re
-          necessitatibus saepe eveniet ut et voluptates repudianda sint et
-          molestiae non recusandae. Itaque earum rerum hic tenetur a sapiente
-          delectus.
+          DatAgent DAO uses FVM and Bacalhau at it core to make all the
+          processes on-chain. FVM allows data to be integrated with smart
+          contracts enabling all DAO functionalities and Bacalhau enables
+          decentralized compute of AI models, etc. Along with that we use many
+          other protocols to make all this possible-
         </p>
         <div className={classes["btn-container"]}>
           <button className="custom-btn">

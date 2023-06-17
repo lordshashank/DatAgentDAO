@@ -7,7 +7,7 @@ const Page = () => {
     <div className={classes["ai-conference"]}>
       <div className={classes["header-intro"]}>
         <Header />
-        <h1>Upcoming EventsAI Conference</h1>
+        <h1>All listed DAOs</h1>
       </div>
       <Events />
       <Footer />

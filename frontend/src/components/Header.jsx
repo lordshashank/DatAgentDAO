@@ -25,7 +25,7 @@ const Header = () => {
       >
         <div className={classes["logo-container"]}>
           <Image src={logo} width={50} height={40} />
-          <span>Artelligence</span>
+          <span>DatAgent DAO</span>
         </div>
       </Link>
       <div className={classes.links}>
@@ -33,7 +33,7 @@ const Header = () => {
           className={activeClassName("/ai-conference")}
           href="/ai-conference"
         >
-          Ai Conference
+          DAOs
         </Link>
       </div>
       <div className={classes["connect-button"]}>

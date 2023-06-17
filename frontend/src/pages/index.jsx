@@ -62,10 +62,11 @@ const page = () => {
         <Header />
         <div className={classes["header-down"]}>
           <div className={classes.highlights}>
-            <h1>Bring Force of Artificial Intelligence To Business</h1>
+            <h1>One-stop solution for Decentralized AI Protocols</h1>
             <p>
-              Quis autem vel eum iure reprehenderit aui in ea voluptate velit
-              esse ruam nihil molestiae conseuatur.
+              Make your AI protocol decentralized from decision making to model
+              training as well as getting outputs. DatAgent DAO provide a
+              one-stop on-chain solution for all your needs.
             </p>
             <div className={classes.buttons}>
               <button className="custom-btn">
@@ -115,7 +116,7 @@ const page = () => {
         src="https://ipfs.io/ipfs/bafybeibzkimk372le6bdtbpvrksm7occe2kjya6c7czr3ctbfmev7f74bi/outputs/image0.png"
         width={400}
         height={400}
-      />
+      /> */}
     </div>
   );
 };

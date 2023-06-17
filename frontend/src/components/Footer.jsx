@@ -10,7 +10,7 @@ const Footer = () => {
       <div className={classes.links}>
         <div className={classes["logo-container"]}>
           <Image src={logo} width={50} height={40} />
-          <span>Artelligence</span>
+          <span>DatAgent DAO</span>
         </div>
         <p>
           Ruis aute irure dolor in reprehenderit in volu velit ese ciu nulla

@@ -1,6 +1,7 @@
 .home {
   background: black url("../public/homeshape-bg.png") center no-repeat;
   background-size: cover;
+  height: 500px;
   z-index: 10;
 }
 .header-down {

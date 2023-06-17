@@ -18,32 +18,35 @@ const AboutUs = () => {
         <Image className={classes.img4} src={image4} width={130} height={130} />
       </div>
       <div className={classes["right-section"]}>
-        <h1 className="section-heading">ABOUT US </h1>
-        <p className="section-title">Empowering People By Keeping Them Well</p>
+        <h1 className="section-heading">Services you get</h1>
+        <p className="section-title">How DAO changes the AI landscape</p>
         <p className="description">
           {" "}
-          Repellendus autem ruibusdam et aut officiis debitis aut re
-          necessitatibus saepe eveniet ut et voluptates repudianda sint et
-          molestiae non recusandae. Itaque earum rerum hic tenetur a sapiente
-          delectus{" "}
+          With help of DatAgent DAO, you can make your AI protocol community
+          owned with giving users say in decision making. You would be able to
+          make all the processes from model training to getting outputs on-chain
+          with help of FVM and Bacalhau. some of the services you get are:{" "}
         </p>
         <div className={classes.proof}>
           <Image src={image5} width={60} height={60} />
           <div>
-            <h4>100% Customers Satisfaction</h4>
+            <h4>Dataset proposals</h4>
             <p className="description">
-              Amet minim mollit non deserunt ullamco est sit aliua dolor do amet
-              sint.
+              Users can propose their datasets and earn the governance for
+              improving the models. They can also buy the datasets by making
+              proposals by paying the tokens.
             </p>
           </div>
         </div>
         <div className={classes.proof}>
           <Image src={image6} width={60} height={60} />
           <div>
-            <h4>Quality Assurance Guarantee</h4>
+            <h4>Model training and outputs through on-chain transactions</h4>
             <p className="description">
-              Velit officia consequat duis enim velit mollie assu omnis dolor
-              repellendus.
+              With help of Bacalhau's Lilypad implementation you can train your
+              models on-chain and get the outputs on-chain by making smart
+              contract transactions, bringing more decentralization to your AI
+              protocol.
             </p>
           </div>
         </div>

@@ -5,12 +5,11 @@ import EventsCard from "./EventsCard";
 const event = [
   {
     image: "FIRST",
-    title: "AI Seminar: Exploring the Future of Artificial Intelligence",
-    country: "Austrailia",
-    location:
-      "Level 3, 551 Swanston Street Melbourne, 3053, Australia, Melbourne, Australia",
+    title: "Stable Diffusion DAO",
+    country: "Dreambooth model",
+    location: "",
     about:
-      "Join us for an exciting seminar on exploring the future of artificial intelligence (AI). This event is designed for tech enthusiasts, entrepreneurs, and anyone interested in understanding the potential of",
+      "This a DAO for Stable Diffusion model. You can propose a dataset to train models, ask for datasets we use and participate in decision making. You can also Test the model directly from here",
   },
 ];
 const Events = () => {
@@ -23,7 +22,7 @@ const Events = () => {
           type="text"
           placeholder="Search"
         />
-        <button className={classes["find-btn"]}>Find Events</button>
+        <button className={classes["find-btn"]}>Find DAOs</button>
       </div>
       <div className={classes["all-events"]}>
         {event.map((event) => (
@@ -38,7 +37,7 @@ const Events = () => {
       </div>
       <div className={classes.calendar}>
         <button className={classes["find-btn"]}>
-          Subscribe to calendar <IoIosArrowDown />
+          Create A DAO <IoIosArrowDown />
         </button>
       </div>
     </div>
