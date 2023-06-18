@@ -30,7 +30,7 @@
 <br />
 <div align="center">
   <a href="https://github.com/lordshashank/DatAgentDAO">
-    <img src="./frontend/public/logo_datagentdao.jpg" alt="Logo" width="80" height="80">
+    <img src="./images/logo_datagentdao.jpg" alt="Logo" width="80" height="80">
   </a>
 
 <h3 align="center">DatAgent DAO</h3>
@@ -171,7 +171,7 @@ Mentors have been helping us, giving reviews with various aspects of the project
 [license-url]: https://github.com/lordshashank/DatAgentDAO/blob/master/LICENSE.txt
 [linkedin-shield]: https://img.shields.io/badge/-LinkedIn-black.svg?style=for-the-badge&logo=linkedin&colorB=555
 [linkedin-url]: https://linkedin.com/in/linkedin_username
-[product-screenshot]: frontend/public/datagentLandingPage.png
+[product-screenshot]: ./images/datagentLandingPage.png
 [next.js]: https://img.shields.io/badge/next.js-000000?style=for-the-badge&logo=nextdotjs&logoColor=white
 [next-url]: https://nextjs.org/
 [react.js]: https://img.shields.io/badge/React-20232A?style=for-the-badge&logo=react&logoColor=61DAFB
