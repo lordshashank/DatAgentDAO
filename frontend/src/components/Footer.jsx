@@ -12,7 +12,7 @@ const Footer = () => {
           <Image className={classes.logo} src={logo} width={50} height={40} />
           <span>DatAgent DAO</span>
         </div>
-        <p>One-stop solution for Decentralized AI Protocols</p>
+        <p>Complete solution for Decentralized AI Protocols</p>
         <div className={classes["social-links"]}>
           <FaFacebookF />
           <FaTwitter />

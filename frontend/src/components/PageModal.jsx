@@ -27,7 +27,7 @@ const PageModal = ({ isButton, children }) => {
                 <h1>Governance Proposals</h1>
                 {isButton ? (
                   <>
-                    <button className={classes.btn}>Get Proposal</button>
+                    <button className={classes.btn}>Get Dataset</button>
                     <button
                       className={classes.btn}
                       onClick={() => setShowCart(!showCart)}

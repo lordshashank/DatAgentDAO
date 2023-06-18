@@ -87,10 +87,10 @@ const Page = () => {
             </div>
             <div className={classes.column}>
               <h3>Current Status</h3>
-              <p>
+              <p className={classes.greeny}>
                 {" "}
-                Congratulations your proposal was accepted and model is trained
-                on your data
+                Congratulations your proposal was accepted and model has been
+                trained on your data
               </p>
             </div>
             <div className={classes.column}>

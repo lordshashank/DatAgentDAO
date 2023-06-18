@@ -51,7 +51,7 @@ const page = () => {
         <Header />
         <div className={classes["header-down"]}>
           <div className={classes.highlights}>
-            <h1>One-stop solution for Decentralized AI Protocols</h1>
+            <h1>Complete solution for Decentralized AI Protocols</h1>
             <p>
               Make your AI protocol decentralized from decision making to model
               training as well as getting outputs. DatAgent DAO provide a

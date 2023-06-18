@@ -67,7 +67,7 @@ const TestModal = ({ onClose }) => {
                 setIsLoading(false);
                 setShowImage(true);
                 console.log("timer");
-              }, 60000);
+              }, 2000);
             }}
           >
             {!isLoading ? "Generate" : <div className="spinner"></div>}
