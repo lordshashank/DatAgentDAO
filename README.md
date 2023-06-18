@@ -41,7 +41,7 @@
     <a href="https://www.ethglobal.com/showcase/datagent-dao-gkd66"><strong>Explore the project »</strong></a>
     <br />
     <br />
-    <a href="https://github.com/lordshashank/DatAgentDAO">View Demo</a>
+    <a href="https://stream.mux.com/TkKJh7xgvzPgLx1tfgzipsY3atYqp5JaUIoxUR00qoVs/high.mp4">View Demo</a>
     ·
     <a href="https://github.com/lordshashank/DatAgentDAO/issues">Report Bug</a>
     ·
@@ -79,7 +79,7 @@
 
 ## About The Project
 
-[![Product Name Screen Shot][product-screenshot]](https://example.com)
+[![Product Name Screen Shot][product-screenshot]](https://www.ethglobal.com/showcase/datagent-dao-gkd66)
 
 ### The Problem
 
@@ -171,7 +171,7 @@ Mentors have been helping us, giving reviews with various aspects of the project
 [license-url]: https://github.com/lordshashank/DatAgentDAO/blob/master/LICENSE.txt
 [linkedin-shield]: https://img.shields.io/badge/-LinkedIn-black.svg?style=for-the-badge&logo=linkedin&colorB=555
 [linkedin-url]: https://linkedin.com/in/linkedin_username
-[product-screenshot]: images/screenshot.png
+[product-screenshot]: frontend/public/datagentLandingPage.png
 [next.js]: https://img.shields.io/badge/next.js-000000?style=for-the-badge&logo=nextdotjs&logoColor=white
 [next-url]: https://nextjs.org/
 [react.js]: https://img.shields.io/badge/React-20232A?style=for-the-badge&logo=react&logoColor=61DAFB
