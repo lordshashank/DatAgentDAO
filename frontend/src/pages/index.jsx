@@ -12,7 +12,7 @@ import useDatabase from "../../utils/useDatabase";
 import useWeb3 from "../../utils/useWeb3";
 import { useState } from "react";
 import UploadFile from "../components/UploadFile";
-import getTransactionInfo from "../../utils/BeryxClient";
+// import getTransactionInfo from "../../utils/BeryxClient";
 import { useAbiEncodeWithSignature } from "../../utils/useAbiEncodeFunctions";
 import useDaoContracts from "../../utils/useDaoContracts";
 const page = () => {
@@ -26,7 +26,7 @@ const page = () => {
     transferDatabase,
     readDatabase,
   } = useDatabase();
-  const { getImageFromPrompt, getAllImages } = useDaoContracts();
+  // const { getImageFromPrompt, getAllImages } = useDaoContracts();
   // console.log(getDatabases());
   // createDatabase();
   // writeInDatabase("my_sdk_table_80001_6961");
@@ -36,7 +36,7 @@ const page = () => {
   // updateDatabase(databaseName, 200);
   // readDatabase(databaseName);
   // getHealthCheck();
-  console.log(getTransactionInfo());
+  // console.log(getTransactionInfo());
   const deal = [
     "0x6567",
     100,
