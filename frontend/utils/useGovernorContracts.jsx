@@ -17,7 +17,20 @@ const useGovernorContracts = () => {
   const { runContractFunction: queue } = useWeb3Contract({});
   const { runContractFunction: execute } = useWeb3Contract({});
   const { runContractFunction: castVoteWithReason } = useWeb3Contract({});
-  const sendProposal = async (dealDataset) => {
+  const dealDataset = [
+    "0x56",
+    100,
+    true,
+    "test",
+    0,
+    10,
+    0,
+    0,
+    0,
+    1,
+    ["", 0, false, false],
+  ];
+  const sendProposal = async () => {
     // const dealDatasetEncoded = useAbiEncodeWithSignature(
     //   "function provideDataSet (tuple (bytes piece_cid, uint64 piece_size, bool verified_deal, string label, int64 start_epoch, int64 end_epoch, uint256 storage_price_per_epoch,uint256 provider_collateral,uint256 client_collateral,uint64 extra_params_version,tuple(string location_ref, uint64 car_size, bool skip_ipni_announce, bool remove_unsealed_copy) extra_params) deal)",
     //   "provideDataSet",

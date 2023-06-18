@@ -38,11 +38,8 @@ const proposals = () => {
     <PageModal isButton={true}>
       <div className={classes["proposals-list"]}>
         <h4 className={classes.heading}>All Proposals</h4>
-        <ProposalsCard title={"Refresh Polygon COMP"} isPass={true} />
-        <ProposalsCard
-          title={"Interest Rate Curve Updated for Ethereum Compound v3 USDC"}
-          isPass={false}
-        />
+        <ProposalsCard title={"Model Dataset Proposal"} isPass={true} />
+        <ProposalsCard title={"Model Dataset Proposal"} isPass={false} />
       </div>
       <Footer />
     </PageModal>

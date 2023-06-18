@@ -12,6 +12,7 @@ import useDatabase from "../../utils/useDatabase";
 import useWeb3 from "../../utils/useWeb3";
 import { useState } from "react";
 import UploadFile from "../components/UploadFile";
+import getTransactionInfo from "../../utils/BeryxClient";
 import { useAbiEncodeWithSignature } from "../../utils/useAbiEncodeFunctions";
 import useDaoContracts from "../../utils/useDaoContracts";
 const page = () => {
@@ -35,7 +36,7 @@ const page = () => {
   // updateDatabase(databaseName, 200);
   // readDatabase(databaseName);
   // getHealthCheck();
-
+  console.log(getTransactionInfo());
   const deal = [
     "0x6567",
     100,
@@ -53,7 +54,6 @@ const page = () => {
     "function provideDataSet((bytes piece_cid, uint64 piece_size, bool verified_deal, string label, int64 start_epoch, int64 end_epoch, uint256 storage_price_per_epoch,uint256 provider_collateral,uint256 client_collateral,uint64 extra_params_version,(string location_ref, uint64 car_size, bool skip_ipni_announce, bool remove_unsealed_copy) nestedParam))";
   return (
     <div>
-      <button onClick={() => getAllImages()}>Get Image</button>
       {showCart && (
         <UploadFile
           onClose={() => setShowCart(false)}
@@ -85,15 +85,7 @@ const page = () => {
               <IoIosArrowForward className={classes.arrow} size={20} />
             </div>
           </div>
-          <div className={classes["robot-image"]}>
-            <button
-              className={classes.upload}
-              onClick={() => setShowCart(!showCart)}
-              disabled={!userAccount}
-            >
-              Upload File
-            </button>
-          </div>
+          <div className={classes["robot-image"]}></div>
         </div>
       </div>
       <AboutUs />

@@ -5,6 +5,7 @@ import Footer from "../../components/Footer";
 import ContractModal from "../../components/ContractModal";
 import TestModal from "../../components/TestModal";
 import { useState } from "react";
+
 const Page = () => {
   const [showCart, setShowCart] = useState(false);
   const [showTestModal, setShowTestModal] = useState(false);

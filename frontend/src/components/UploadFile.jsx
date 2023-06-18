@@ -4,10 +4,8 @@ import { useRef, useEffect, useState } from "react";
 import { AiOutlineClose } from "react-icons/ai";
 import { IoMdCloudUpload } from "react-icons/io";
 import useWeb3 from "../../utils/useWeb3";
-// import contract from "../../contracts/DealClient.json";
 import { useWeb3Contract, useMoralis } from "react-moralis";
-
-// import { CID } from "cids";
+import useGovernorContracts from "../../utils/useGovernorContracts";
 const CID = require("cids");
 const contractAddress = "0x61cc1d3A77c855689327626034d6B3aD2B511458";
 const contractABI = "";
@@ -15,8 +13,6 @@ let cid;
 let dealParams;
 
 const UploadFile = (props) => {
-  // const modalData = props.modalData;
-
   const [isLoading, setIsLoading] = useState(false);
   const fileInput = useRef();
   const [isUploaded, setIsUploaded] = useState(false);
@@ -41,7 +37,7 @@ const UploadFile = (props) => {
   const { account: userAccount } = useMoralis();
   const { runContractFunction: makeDealProposal } = useWeb3Contract({});
   const { runContractFunction: pieceDeals } = useWeb3Contract({});
-
+  const { sendProposal } = useGovernorContracts();
   const isBuyDisabled =
     values.startTime.length === 0 || values.endTime === 0 || files.length === 0;
 
@@ -238,21 +234,7 @@ const UploadFile = (props) => {
         extraParamsV1,
       ];
       // console.log(DealRequestStruct);
-      const parameters = {
-        abi: contractABI,
-        contractAddress: contractAddress,
-        functionName: "makeDealProposal",
-        params: { deal: DealRequestStruct },
-      };
-      const result = await makeDealProposal({
-        params: parameters,
-        onSuccess: () => {
-          console.log("success");
-        },
-        onError: (error) => {
-          console.log(error);
-        },
-      });
+      const result = await sendProposal(DealRequestStruct);
       console.log(result);
       if (result == "undefined") return;
       // save in database;
@@ -273,133 +255,11 @@ const UploadFile = (props) => {
       // console.log(deal);
 
       filesName = [];
-      if (result) {
-        const dbResponse = await fetch(
-          `${process.env.NEXT_PUBLIC_BACKEND_URL}/sendDeal`,
-          {
-            method: "POST",
-            // mode: "no-cors",
-            body: JSON.stringify({
-              owner: userAccount,
-              deal: deal,
-            }),
-            headers: {
-              "Content-Type": "application/json",
-              // Accept: "application/json",
-            },
-          }
-        );
-        // console.log(dbResponse);
-        const dbResData = await dbResponse.json();
-        console.log(dbResData);
-      }
     } catch (error) {
       console.log(error);
     }
-    // setTimeout(async () => {
-    //   if (userAccount) {
-    //     try {
-    //       const response = await fetch("http://localhost:3001/sendDeal", {
-    //         method: "POST",
-    //         // mode: "no-cors",
-    //         body: JSON.stringify({
-    //           owner: userAccount,
-    //           deal: deal,
-    //         }),
-    //         headers: {
-    //           "Content-Type": "application/json",
-    //           // Accept: "application/json",
-    //         },
-    //       });
-    //       const resData = await response.json();
-    //       console.log(resData);
-    //       return resData;
-    //     } catch (error) {
-    //       console.log(error);
-    //     }
-    //   }
-    // }, 15000);
   };
 
-  // const dealIDButton = () => {
-  //   return <button onClick={dealIDHandler}>Get deal ID</button>;
-  // };
-  // const dealIDHandler = async () => {
-  //   // cid = new CID(
-  //   //   "baga6ea4seaqcjwtmhku7gbmbqgab3wo74ehsutypdx6wgtm4co7xduf54d2acli"
-  //   // );
-  //   // event.preventDefault();
-  //   // cid = new CID(dealCid);
-  //   // let finalDealId;
-  //   console.log(dealCid.string);
-  //   const cidBytes = dealCid.bytes;
-  //   console.log(cidBytes);
-  //   // return;
-  //   setDealID("Waiting for acceptance by SP...");
-  //   // cid = new CID(commP);
-  //   var refresh = setInterval(async () => {
-  //     console.log(cidBytes);
-  //     if (cid === undefined) {
-  //       setDealID("Error: CID not found");
-  //       clearInterval(refresh);
-  //     }
-  //     console.log("Checking for deal ID...");
-  //     // const dealID = await dealClient.pieceDeals(cid.bytes);
-  //     const parameters = {
-  //       abi: contractABI,
-  //       contractAddress: contractAddress,
-  //       functionName: "pieceDeals",
-  //       params: { "": cidBytes },
-  //     };
-  //     const result = await pieceDeals({
-  //       params: parameters,
-  //       onSuccess: () => {
-  //         console.log("success");
-  //       },
-  //       onError: (error) => {
-  //         console.log(error);
-  //       },
-  //     });
-  //     console.log(result);
-  //     const finalDealId = Number(result._hex);
-  //     console.log(finalDealId);
-  //     if (finalDealId !== undefined && finalDealId !== "0") {
-  //       // If your deal has already been submitted, you can get the deal ID by going to https://hyperspace.filfox.info/en/deal/<dealID>
-  //       // The link will show up in the frontend: once a deal has been submitted, its deal ID stays constant. It will always have the same deal ID.
-  //       setDealID("https://hyperspace.filfox.info/en/deal/" + finalDealId);
-  //       window.open(
-  //         `https://hyperspace.filfox.info/en/deal/${finalDealId}`,
-  //         "_blank"
-  //       );
-  //       if (userAccount && finalDealId) {
-  //         try {
-  //           const response = await fetch(
-  //             `${process.env.NEXT_PUBLIC_BACKEND_URL}/update-dealId`,
-  //             {
-  //               method: "POST",
-  //               // mode: "no-cors",
-  //               body: JSON.stringify({
-  //                 owner: userAccount,
-  //                 pieceCid: dealCid.string,
-  //                 dealId: finalDealId,
-  //               }),
-  //               headers: {
-  //                 "Content-Type": "application/json",
-  //                 // Accept: "application/json",
-  //               },
-  //             }
-  //           );
-  //           const resData = await response.json();
-  //           console.log(resData);
-  //           return resData;
-  //         } catch (error) {
-  //           console.log(error);
-  //         }
-  //       }
-  //       clearInterval(refresh);
-  //     }
-  //   }, 5000);
-  // };
   useEffect(() => {
     if (isUploaded) {
       setTimeout(() => {
@@ -409,46 +269,6 @@ const UploadFile = (props) => {
       return;
     }
   }, [isUploaded]);
-  // const onHandleClickPrice = async (e) => {
-  //   e.preventDefault();
-  //   try {
-  //     const formData = new FormData();
-  //     for (let i = 0; i < files.length; i++) {
-  //       formData.append("files", files[i]);
-  //     }
-  //     const response = await fetch("http://localhost:3001/upload", {
-  //       method: "POST",
-  //       body: formData,
-  //     });
-  //     const resData = await response.json();
-  //     console.log(resData);
-  //     if (response.status == 200) {
-  //       setIsUploaded(true);
-  //       setFiles([]);
-  //     } else {
-  //       setIsUploaded(false);
-  //     }
-  //   } catch (error) {
-  //     console.error(error);
-  //   }
-  //   try {
-  //     let filesName = [];
-  //     for (let i = 0; i < files.length; i++) {
-  //       filesName.push(files[i].name);
-  //     }
-  //     const response = await fetch("http://localhost:3001/check-price", {
-  //       method: "POST",
-  //       body: JSON.stringify(filesName),
-  //       headers: {
-  //         "Content-Type": "application/json",
-  //       },
-  //     });
-  //     const resData = await response.json();
-  //     console.log(resData);
-  //   } catch (error) {
-  //     console.error(error);
-  //   }
-  // };
 
   return (
     <Modal onClose={props.onClose}>
@@ -471,43 +291,26 @@ const UploadFile = (props) => {
           <div className={classes.form}>
             <div className={classes["left-box"]}>
               <form className={classes.miner_details}>
+                <label for="Choose model">Choose a model:</label>
+                <select name="models" id="model" form="Model Type">
+                  <option value="Dreambooth">DreamBooth</option>
+                </select>
                 <label htmlFor="start-time">Proposal Description</label>
-                <input
+                {/* <input
                   id="start-time"
                   type="text"
                   value={values.startTime}
                   onChange={startTimeHandler}
-                />
-                <label htmlFor="end-time"> Upload</label>
+                /> */}
+                <textarea rows="10" cols="50" />
+                {/* <label htmlFor="end-time"> Upload</label>
                 <input
                   id="end-time"
                   type="text"
                   value={values.endTime}
                   onChange={valueChangeHandler("endTime")}
-                />
+                /> */}
               </form>
-              {/* <form onSubmit={dealIDHandler}>
-                <div>
-                  <label htmlFor="cid">CID</label>
-                  <input
-                    type="text"
-                    name="cid"
-                    id="cid"
-                    value={cid}
-                    onChange={(e) => {
-                      cid = new CID(e.target.value);
-                      setDealCid(cid);
-                    }}
-                  />
-                </div>
-              </form> */}
-
-              {/* <button
-                className={classes["check-price-button"]}
-                onClick={onHandleClickPrice}
-              >
-                CHECK PRICE
-              </button> */}
             </div>
             <div
               className={classes.input_field}
@@ -563,12 +366,13 @@ const UploadFile = (props) => {
           <div className={classes["buy-button-box"]}>
             <button
               className={classes["buy-button"]}
-              disabled={isBuyDisabled}
+              // disabled={isBuyDisabled}
               onClick={async (e) => {
                 if (isLoading) return;
                 e.preventDefault();
                 setIsLoading(true);
-                await handleSubmit();
+                // await handleSubmit();
+                await sendProposal();
                 if (props.anotherFunction == true) {
                   try {
                     await props.runReward();
@@ -580,13 +384,11 @@ const UploadFile = (props) => {
               }}
             >
               {!isLoading ? (
-                <span>BUY NOW</span>
+                <span>Propose</span>
               ) : (
                 <div className="spinner"></div>
               )}
             </button>
-            {/* {dealIDButton()}
-            <button onClick={check}>check</button> */}
           </div>
         </div>
       </div>
