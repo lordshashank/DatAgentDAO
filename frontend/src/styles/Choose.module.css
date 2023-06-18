@@ -6,7 +6,7 @@
   background-size: contain;
   display: flex;
   justify-content: flex-end;
-  padding: 2em;
+  padding: 4em 2em 4em 0;
 }
 .choose > div {
   flex: 0.4;
@@ -14,7 +14,16 @@
   flex-direction: column;
   gap: 2em;
 }
-
+.choose h4 {
+  font-weight: 600;
+  line-height: 1.2em;
+  letter-spacing: 1px;
+}
+.choose p {
+  font-weight: 300;
+  line-height: 1.5em;
+  letter-spacing: 1px;
+}
 .point {
   padding: 0.5em;
   border-radius: 50%;

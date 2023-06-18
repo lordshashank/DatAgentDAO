@@ -80,6 +80,10 @@
 .details h1 {
   cursor: pointer;
 }
+.details h1:hover {
+  text-decoration: underline;
+  text-decoration-color: #370ef7;
+}
 .details > p:nth-child(2) > span {
   font-weight: 700;
   font-size: 1.1em;

@@ -15,6 +15,7 @@ import UploadFile from "../components/UploadFile";
 // import getTransactionInfo from "../../utils/BeryxClient";
 import { useAbiEncodeWithSignature } from "../../utils/useAbiEncodeFunctions";
 import useDaoContracts from "../../utils/useDaoContracts";
+import filecoinImage from "../../public/filecoin.jpg";
 const page = () => {
   const [showCart, setShowCart] = useState(false);
   const { sendProposal, sendQueue } = useGovernorContracts();
@@ -85,7 +86,14 @@ const page = () => {
               <IoIosArrowForward className={classes.arrow} size={20} />
             </div>
           </div>
-          <div className={classes["robot-image"]}></div>
+          <div className={classes["robot-image"]}>
+            <Image
+              className={classes.f_image}
+              src={filecoinImage}
+              width={800}
+              height={800}
+            />
+          </div>
         </div>
       </div>
       <AboutUs />
