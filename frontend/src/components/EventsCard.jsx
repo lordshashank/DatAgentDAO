@@ -1,7 +1,7 @@
 import classes from "../styles/Events.module.css";
 import Link from "next/link";
 import Image from "next/image";
-import image1 from "../../public/Home-case-study-image-5.jpg";
+import image1 from "../../public/Stable-Diffusion-model.jpg";
 
 const img_src = {
   FIRST: image1,
@@ -35,7 +35,7 @@ const EventsCard = ({
           className={classes.image}
           src={img_src[image]}
           width={500}
-          height={300}
+          height={400}
         />
       </div>
     </div>

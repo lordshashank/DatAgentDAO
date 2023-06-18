@@ -10,7 +10,7 @@ import useDatabase from "../../utils/useDatabase";
 import useWeb3 from "../../utils/useWeb3";
 import { useState } from "react";
 import UploadFile from "../components/UploadFile";
-import getTransactionInfo from "../../utils/BeryxClient";
+// import getTransactionInfo from "../../utils/BeryxClient";
 import useDaoContracts from "../../utils/useDaoContracts";
 const page = () => {
   const [showCart, setShowCart] = useState(false);
@@ -23,7 +23,7 @@ const page = () => {
     readDatabase,
   } = useDatabase();
   const { getImageFromPrompt, getAllImages } = useDaoContracts();
-  console.log(getTransactionInfo());
+  // console.log(getTransactionInfo());
   const deal = [
     "0x6567",
     100,
