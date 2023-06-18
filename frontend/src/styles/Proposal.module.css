@@ -99,3 +99,18 @@
   background-color: green;
   color: white;
 }
+
+.details-data {
+  padding: 1em;
+}
+.row2 {
+  display: flex;
+  gap: 1em;
+  margin-bottom: 1em;
+}
+.column {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5em;
+  margin-top: 1em;
+}

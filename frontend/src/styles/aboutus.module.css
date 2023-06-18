@@ -4,7 +4,7 @@
   margin: 4em 2em;
 }
 .left-section {
-  flex: 0.6;
+  flex: 0.5;
   position: relative;
   display: flex;
   min-height: 620px;
@@ -32,7 +32,7 @@
   right: 200px;
 }
 .right-section {
-  flex: 0.4;
+  flex: 0.5;
   display: flex;
   flex-direction: column;
   gap: 2em;
@@ -77,11 +77,14 @@
     justify-content: center;
     align-items: center;
     text-align: center;
+    margin: 2em;
+    gap: 2em;
   }
   .right-section {
     text-align: center;
     justify-content: center;
     align-items: center;
+    margin-top: -3em;
   }
   .img1 {
     width: 300px;
@@ -110,5 +113,13 @@
     top: 400px;
     left: 40%;
     transform: translateX(-30%);
+  }
+}
+@media (width < 1250px) {
+  .left-section {
+    flex: 0.6;
+  }
+  .right-section {
+    flex: 0.4;
   }
 }

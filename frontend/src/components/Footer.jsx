@@ -9,7 +9,7 @@ const Footer = () => {
     <div className={classes.footer}>
       <div className={classes.links}>
         <div className={classes["logo-container"]}>
-          <Image src={logo} width={50} height={40} />
+          <Image className={classes.logo} src={logo} width={50} height={40} />
           <span>DatAgent DAO</span>
         </div>
         <p>One-stop solution for Decentralized AI Protocols</p>

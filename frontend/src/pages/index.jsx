@@ -10,8 +10,10 @@ import useDatabase from "../../utils/useDatabase";
 import useWeb3 from "../../utils/useWeb3";
 import { useState } from "react";
 import UploadFile from "../components/UploadFile";
-import getTransactionInfo from "../../utils/BeryxClient";
+// import getTransactionInfo from "../../utils/BeryxClient";
 import useDaoContracts from "../../utils/useDaoContracts";
+import filecoinImage from "../../public/filecoin.jpg";
+import Image from "next/image";
 const page = () => {
   const [showCart, setShowCart] = useState(false);
   const { userAccount, Moralis, isWeb3Enabled } = useWeb3();
@@ -23,7 +25,7 @@ const page = () => {
     readDatabase,
   } = useDatabase();
   const { getImageFromPrompt, getAllImages } = useDaoContracts();
-  console.log(getTransactionInfo());
+  // console.log(getTransactionInfo());
   const deal = [
     "0x6567",
     100,
@@ -70,7 +72,14 @@ const page = () => {
               <IoIosArrowForward className={classes.arrow} size={20} />
             </div>
           </div>
-          <div className={classes["robot-image"]}></div>
+          <div className={classes["robot-image"]}>
+            <Image
+              className={classes.f_image}
+              src={filecoinImage}
+              width={800}
+              height={800}
+            />
+          </div>
         </div>
       </div>
       <AboutUs />
