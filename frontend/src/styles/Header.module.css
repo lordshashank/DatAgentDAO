@@ -62,6 +62,16 @@
   font-weight: 550;
   position: relative;
 }
+.connect-button {
+  display: flex;
+  align-items: center;
+}
+.push {
+  background-image: #02162d;
+  border-radius: 50%;
+  width: 45px;
+  height: 45px;
+}
 
 @media (width < 700px) {
   .header {

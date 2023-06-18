@@ -1,4 +1,4 @@
-import Beryx from "@zondax/beryx";
+import { Beryx } from "@zondax/beryx";
 const jwt = process.env.ZONDAX_JWT_TOKEN;
 const client = new Beryx.Filecoin({ jwt, network: "mainnet" });
 

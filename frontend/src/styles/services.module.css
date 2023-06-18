@@ -2,8 +2,8 @@
   display: flex;
   align-items: center;
   gap: 1em;
-  background-color: #eafcfe;
-  padding: 4em 2em;
+  background-color: #e6e59d;
+  padding: 2em;
 }
 .half-section {
   flex: 0.5;
@@ -15,22 +15,23 @@
 }
 .row {
   display: flex;
-  align-items: flex-start;
+  /* align-items: flex-start; */
   gap: 2em;
+  margin-bottom: 1em;
 }
-.row > div:nth-child(2) {
-  margin-top: 2em;
+.row > div {
+  flex: 1;
 }
 
 /* Service Card */
 .service-card {
   display: flex;
   flex-direction: column;
-  gap: 1em;
+  gap: 0.5em;
   align-items: center;
   background-color: white;
   border-radius: 20px;
-  padding: 2em 1em;
+  padding: 1em;
 }
 .service-card:hover {
   background-image: linear-gradient(100deg, #02162d 0%, #37e0f7 100%);
